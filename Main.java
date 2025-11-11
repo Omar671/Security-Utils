@@ -13,31 +13,34 @@ public class Main {
             try {
                 int choice = Integer.parseInt(input);
                 
-                switch (choice) {
-                    case 1:
-                        testPasswordStrength();
-                        break;
-                    case 2:
-                        generateSecurePassword();
-                        break;
-                    case 3:
-                        generateMemorablePassword();
-                        break;
-                    case 4:
-                        generateHash();
-                        break;
-                    case 5:
-                        testEncryption();
-                        break;
-                    case 6:
-                        compareHashes();
-                        break;
-                    case 0:
-                        TerminalUtils.printSuccess("Thank you for using Security Utils! Goodbye! 👋");
-                        return;
-                    default:
-                        TerminalUtils.printError("Invalid option! Choose between 0-6.");
-                }
+switch (choice) {
+    case 1:
+        testPasswordStrength();
+        break;
+    case 2:
+        generateSecurePassword();
+        break;
+    case 3:
+        generateMemorablePassword();
+        break;
+    case 4:
+        generateHash();
+        break;
+    case 5:
+        testEncryption();
+        break;
+    case 6:
+        testDecryption();
+        break;
+    case 7:
+        compareHashes();
+        break;
+    case 0:
+        TerminalUtils.printSuccess("Thank you for using Security Utils! Goodbye! 👋");
+        return;
+    default:
+        TerminalUtils.printError("Invalid option! Choose between 0-7.");
+}
             } catch (NumberFormatException e) {
                 TerminalUtils.printError("Please enter a valid number!");
             }
@@ -250,16 +253,75 @@ public class Main {
         
         try {
             String encrypted = Encryptor.encrypt(text, password);
-            String decrypted = Encryptor.decrypt(encrypted, password);
             
-            System.out.println("\n" + TerminalUtils.GREEN + "🔄 ENCRYPTION SUCCESSFUL!" + TerminalUtils.RESET);
+            System.out.println("\n" + TerminalUtils.GREEN + "🔒 ENCRYPTION SUCCESSFUL!" + TerminalUtils.RESET);
             System.out.println("Original text: " + text);
             System.out.println("Encrypted text: " + TerminalUtils.CYAN + encrypted + TerminalUtils.RESET);
-            System.out.println("Decrypted text: " + decrypted);
-            System.out.println("✅ Verification: " + (text.equals(decrypted) ? "SUCCESS" : "FAILED"));
+            System.out.println("Password used: " + password);
+            
+            // Teste de verificação automática
+            String decrypted = Encryptor.decrypt(encrypted, password);
+            System.out.println("Auto-verification: " + (text.equals(decrypted) ? "✅ SUCCESS" : "❌ FAILED"));
+            
+            // Oferece para salvar
+            System.out.print("\n💾 Save encrypted text to file? (y/N): ");
+            String save = scanner.nextLine().trim().toLowerCase();
+            if (save.equals("y") || save.equals("yes")) {
+                try {
+                    String content = "Original: " + text + "\n" +
+                                   "Encrypted: " + encrypted + "\n" +
+                                   "Password: " + password + "\n" +
+                                   "Timestamp: " + java.time.LocalDateTime.now();
+                    FileManager.saveToFile("encrypted_data.txt", content);
+                    TerminalUtils.printSuccess("Encrypted data saved to encrypted_data.txt");
+                    TerminalUtils.printWarning("⚠️  Keep the password safe to decrypt later!");
+                } catch (Exception e) {
+                    TerminalUtils.printError("Error saving file: " + e.getMessage());
+                }
+            }
             
         } catch (Exception e) {
             TerminalUtils.printError("Encryption error: " + e.getMessage());
+        }
+        
+        TerminalUtils.endSection();
+    }
+    
+    private static void testDecryption() {
+        TerminalUtils.printSection("AES DECRYPTION");
+        
+        System.out.print("Enter encrypted text: ");
+        String encryptedText = scanner.nextLine();
+        
+        System.out.print("Enter decryption password: ");
+        String password = scanner.nextLine();
+        
+        try {
+            String decrypted = Encryptor.decrypt(encryptedText, password);
+            
+            System.out.println("\n" + TerminalUtils.GREEN + "🔓 DECRYPTION SUCCESSFUL!" + TerminalUtils.RESET);
+            System.out.println("Encrypted text: " + encryptedText);
+            System.out.println("Decrypted text: " + TerminalUtils.CYAN + decrypted + TerminalUtils.RESET);
+            System.out.println("Password used: " + password);
+            
+            System.out.print("\n💾 Save decryption result to file? (y/N): ");
+            String save = scanner.nextLine().trim().toLowerCase();
+            if (save.equals("y") || save.equals("yes")) {
+                try {
+                    String content = "Encrypted: " + encryptedText + "\n" +
+                                   "Decrypted: " + decrypted + "\n" +
+                                   "Password: " + password + "\n" +
+                                   "Timestamp: " + java.time.LocalDateTime.now();
+                    FileManager.saveToFile("decrypted_data.txt", content);
+                    TerminalUtils.printSuccess("Decryption result saved to decrypted_data.txt");
+                } catch (Exception e) {
+                    TerminalUtils.printError("Error saving file: " + e.getMessage());
+                }
+            }
+            
+        } catch (Exception e) {
+            TerminalUtils.printError("Decryption error: " + e.getMessage());
+            TerminalUtils.printWarning("Possible causes: Wrong password, corrupted data, or invalid format");
         }
         
         TerminalUtils.endSection();
