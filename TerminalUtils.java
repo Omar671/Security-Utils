@@ -35,13 +35,14 @@ public class TerminalUtils {
     
     public static void printMenu() {
         System.out.println(BLUE + "┌─── MAIN MENU ────────────────────────────────────────────────┐" + RESET);
-        System.out.println(BLUE + "│" + RESET + "  " + GREEN + "1" + RESET + " │ Check password strength                         " + BLUE + "        │" + RESET);
+        System.out.println(BLUE + "│" + RESET + "  " + GREEN + "1" + RESET + " │ Check password strength                          " + BLUE + "       │" + RESET);
         System.out.println(BLUE + "│" + RESET + "  " + GREEN + "2" + RESET + " │ Generate secure custom password                 " + BLUE + "        │" + RESET);
         System.out.println(BLUE + "│" + RESET + "  " + GREEN + "3" + RESET + " │ Generate memorable password                     " + BLUE + "        │" + RESET);
         System.out.println(BLUE + "│" + RESET + "  " + GREEN + "4" + RESET + " │ Generate hash (MD5/SHA-256/SHA-512)             " + BLUE + "        │" + RESET);
-        System.out.println(BLUE + "│" + RESET + "  " + GREEN + "5" + RESET + " │ AES encryption with password                    " + BLUE + "        │" + RESET);
-        System.out.println(BLUE + "│" + RESET + "  " + GREEN + "6" + RESET + " │ Compare hashes                                  " + BLUE + "        │" + RESET);
-        System.out.println(BLUE + "│" + RESET + "  " + RED + "0" + RESET + " │ Exit                                              " + BLUE + "      │" + RESET);
+        System.out.println(BLUE + "│" + RESET + "  " + GREEN + "5" + RESET + " │ AES encryption                                   " + BLUE + "       │" + RESET);
+        System.out.println(BLUE + "│" + RESET + "  " + GREEN + "6" + RESET + " │ AES decryption                                   " + BLUE + "       │" + RESET);
+        System.out.println(BLUE + "│" + RESET + "  " + GREEN + "7" + RESET + " │ Compare hashes                                  " + BLUE + "        │" + RESET);
+        System.out.println(BLUE + "│" + RESET + "  " + RED + "0" + RESET + " │ Exit                                            " + BLUE + "        │" + RESET);
         System.out.println(BLUE + "└──────────────────────────────────────────────────────────────┘" + RESET);
         System.out.print(YELLOW + "👉 Choose an option: " + RESET);
     }
