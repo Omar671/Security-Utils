@@ -78,6 +78,58 @@ public class Main {
     private static void generateSecurePassword() {
         TerminalUtils.printSection("SECURE PASSWORD GENERATOR");
         
+        System.out.println("Choose generation mode:");
+        System.out.println("1 - Quick Generate (recommended settings)");
+        System.out.println("2 - Custom Generate (choose character types)");
+        System.out.print("Option (1-2): ");
+        
+        String modeChoice = scanner.nextLine().trim();
+        
+        if (modeChoice.equals("1")) {
+            generateQuickPassword();
+        } else if (modeChoice.equals("2")) {
+            generateCustomPassword();
+        } else {
+            TerminalUtils.printError("Invalid option! Using quick generate.");
+            generateQuickPassword();
+        }
+    }
+    
+    private static void generateQuickPassword() {
+        System.out.print("Password length (12-32, recommended 16): ");
+        int length;
+        try {
+            length = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            TerminalUtils.printWarning("Invalid length! Using default 16.");
+            length = 16;
+        }
+        
+        if (length < 12 || length > 32) {
+            TerminalUtils.printWarning("Length should be 12-32. Using 16.");
+            length = 16;
+        }
+        
+        String password = PasswordGenerator.generatePassword(length, true, true, true, true);
+        
+        System.out.println("\n" + TerminalUtils.GREEN + "🔑 PASSWORD GENERATED SUCCESSFULLY!" + TerminalUtils.RESET);
+        System.out.println("Password: " + TerminalUtils.CYAN + password + TerminalUtils.RESET);
+        System.out.println("Length: " + password.length() + " characters");
+        System.out.println("Settings: Lowercase + Uppercase + Numbers + Special Characters");
+        
+        PasswordChecker.PasswordStrength analysis = PasswordChecker.analyzePassword(password);
+        System.out.println("Strength: " + analysis.strength);
+        
+        System.out.print("\n💾 Save this password? (y/N): ");
+        String save = scanner.nextLine().trim().toLowerCase();
+        if (save.equals("y") || save.equals("yes")) {
+            FileManager.saveGeneratedPassword(password, "Quick Secure Password");
+        }
+        
+        TerminalUtils.endSection();
+    }
+    
+    private static void generateCustomPassword() {
         System.out.print("Password length (12-32): ");
         int length = Integer.parseInt(scanner.nextLine());
         
@@ -100,6 +152,13 @@ public class Main {
             System.out.println("Password: " + TerminalUtils.CYAN + password + TerminalUtils.RESET);
             System.out.println("Length: " + password.length() + " characters");
             
+            StringBuilder settings = new StringBuilder("Settings: ");
+            if (useLower) settings.append("Lowercase ");
+            if (useUpper) settings.append("Uppercase ");
+            if (useNumbers) settings.append("Numbers ");
+            if (useSpecial) settings.append("SpecialChars");
+            System.out.println(settings.toString());
+            
             PasswordChecker.PasswordStrength analysis = PasswordChecker.analyzePassword(password);
             System.out.println("Strength: " + analysis.strength);
             
@@ -115,7 +174,6 @@ public class Main {
         
         TerminalUtils.endSection();
     }
-    
     private static void generateMemorablePassword() {
         TerminalUtils.printSection("MEMORABLE PASSWORD GENERATOR");
         
