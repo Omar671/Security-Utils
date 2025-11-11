@@ -6,7 +6,7 @@ public class FileManager {
     
     public static void saveToFile(String filename, String content) throws IOException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-            writer.println("=== " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + " ===");
+            writer.println("=== " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + " ===");
             writer.println(content);
             writer.println("=".repeat(50));
             writer.println();
