@@ -15,25 +15,25 @@ A handy Java 21 toolkit for everyday security tasks. It lets you generate strong
 
 What's Inside
 Password Generator
-    Quick Generation: Get a secure password instantly using recommended settings (12-32 characters).
-    Custom Generation: Pick which character types to include (like lowercase, uppercase, numbers, and symbols).
-    Memorable Passwords: Create passwords built from words that are easier to remember but still secure.
+    -Quick Generation: Get a secure password instantly using recommended settings (12-32 characters).
+    -Custom Generation: Pick which character types to include (like lowercase, uppercase, numbers, and symbols).
+    -Memorable Passwords: Create passwords built from words that are easier to remember but still secure.
 Password Strength Checker
-    Get a clear strength rating on a 1-5 scale.
-    Receive specific suggestions on how to make your password stronger.
-    Check if your password meets common security requirements.
+    -Get a clear strength rating on a 1-5 scale.
+    -Receive specific suggestions on how to make your password stronger.
+    -Check if your password meets common security requirements.
 Encryption & Decryption
-    Encrypt any text using AES-256 with secure key derivation (PBKDF2).
-    Handles texts of any length.
-    Save your encrypted data to a file or load it back in for decryption.
+    -Encrypt any text using AES-256 with secure key derivation (PBKDF2).
+    -Handles texts of any length.
+    -Save your encrypted data to a file or load it back in for decryption.
 Hash Generator
-    Generate hashes using MD5(weak), SHA-256, or SHA-512.
-    Quick and reliable generation.
-    Compare two hashes to check if they match.
+    -Generate hashes using MD5(weak), SHA-256, or SHA-512.
+    -Quick and reliable generation.
+    -Compare two hashes to check if they match.
 File Manager
-    Save generated passwords for later use.
-    Store and retrieve encrypted files and decryption results.
-    Keep a record of your password strength analyses.
+    -Save generated passwords for later use.
+    -Store and retrieve encrypted files and decryption results.
+    -Keep a record of your password strength analyses.
 Getting Started
 Building the Project
 You can build it a few different ways:
@@ -167,6 +167,7 @@ MIT License - Free to use in your projects!
 ---
 
 **🔒 Keep your data secure!**  
+
 
 
 
