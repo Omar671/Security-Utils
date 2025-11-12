@@ -1,4 +1,4 @@
-# 🔒 Security Utils v2.0
+# Security Utils v2.0
 
 [![Java](https://img.shields.io/badge/Java-21%20LTS-blue?style=flat-square&logo=java)](https://www.oracle.com/java/)
 [![Maven](https://img.shields.io/badge/Maven-3.9+-success?style=flat-square&logo=apache-maven)](https://maven.apache.org/)
@@ -9,36 +9,35 @@
 
 <img width="456" height="295" alt="image" src="https://github.com/user-attachments/assets/c20f3654-3ca7-42de-8f7e-48eed5f49755" />
 
-A comprehensive security toolkit in Java 21, featuring password generator, password strength checker, AES-256 encryption, hash generator, and much more!
+ava Security Toolkit
 
-## ✨ Main Features
+A handy Java 21 toolkit for everyday security tasks. It lets you generate strong passwords, check how secure they are, encrypt and decrypt text with AES-256, generate file hashes, and manage your results.
 
-### 🔐 Password Generator
-- **Quick Generate**: Secure passwords with recommended settings (12-32 characters)
-- **Custom Generate**: Choose character types to include (lowercase, uppercase, numbers, special)
-- **Memorable Password**: Easy-to-remember passwords using words
-
-### 🔑 Password Strength Checker
-- Complete strength analysis (1-5 stars)
-- Personalized improvement suggestions
-- Security requirement validation
-
-### 🔓 Encryption & Decryption
-- **AES-256** encryption with secure key derivation (PBKDF2)
-- Support for text of any size
-- Save/load encrypted data
-
-### #️⃣ Hash Generator
-- Support for **MD5**, **SHA-256**, and **SHA-512**
-- Fast and reliable generation
-- Hash comparison with validation
-
-### 💾 File Manager
-- Save generated password results
-- Store encrypted/decrypted data
-- Save strength analysis results
-
-## 🚀 How to Use
+What's Inside
+Password Generator
+    Quick Generation: Get a secure password instantly using recommended settings (12-32 characters).
+    Custom Generation: Pick which character types to include (like lowercase, uppercase, numbers, and symbols).
+    Memorable Passwords: Create passwords built from words that are easier to remember but still secure.
+Password Strength Checker
+    Get a clear strength rating on a 1-5 scale.
+    Receive specific suggestions on how to make your password stronger.
+    Check if your password meets common security requirements.
+Encryption & Decryption
+    Encrypt any text using AES-256 with secure key derivation (PBKDF2).
+    Handles texts of any length.
+    Save your encrypted data to a file or load it back in for decryption.
+Hash Generator
+    Generate hashes using MD5(weak), SHA-256, or SHA-512.
+    Quick and reliable generation.
+    Compare two hashes to check if they match.
+File Manager
+    Save generated passwords for later use.
+    Store and retrieve encrypted files and decryption results.
+    Keep a record of your password strength analyses.
+Getting Started
+Building the Project
+You can build it a few different ways:
+## Getting Starded
 
 ### Compile
 ```bash
@@ -72,6 +71,15 @@ java Main
 0 - Exit
 ```
 
+### Important Security Notice
+This software is designed for learning and personal use only. It is NOT suitable for:
+    Corporate or business environments
+    Production systems of any kind
+    Applications handling real user data
+    Financial, healthcare, or sensitive information
+    Any scenario where actual security matters
+Why? I'm just learning crypthography, so this code is essentially a demo code rather than production ready software. 
+
 ## 📋 Requirements
 
 [![Java](https://img.shields.io/badge/Requires-Java%2021%20LTS-blue?style=flat-square&logo=java)](https://www.oracle.com/java/technologies/javase/jdk21-archive.html)
@@ -100,13 +108,13 @@ security-utils/
 └── README.md                # This file
 ```
 
-## 🔧 Technical Features
+## Technical Features
 
 ### AES-256 Encryption
 - Algorithm: AES with CBC mode
 - Key size: 256 bits
 - Key derivation: PBKDF2 with SHA-256
-- Iterations: 10,000
+
 
 ### Hashing
 - **MD5**: Fast, for non-cryptographic purposes
@@ -121,52 +129,24 @@ Scoring based on:
 - ✅ Number inclusion
 - ✅ Special character inclusion
 
-## 📊 Usage Examples
-
-### Check Password Strength
-```
-Enter password to analyze: MySecurePass123!
-📊 ANALYSIS RESULT:
-Length: 17 characters
-Score: 5/5
-Strength: ⭐⭐⭐⭐⭐ VERY STRONG
-```
-
-### Generate Secure Password
-```
-Password length (12-32): 16
-🔑 PASSWORD GENERATED SUCCESSFULLY!
-Password: [generated password]
-Strength: ⭐⭐⭐⭐⭐ VERY STRONG
-```
-
-### AES Encryption
-```
-Enter text to encrypt: Secret message
-Enter encryption password: MyPassword123
-🔒 ENCRYPTION SUCCESSFUL!
-Encrypted text: [encoded-data]
-Auto-verification: ✅ SUCCESS
-```
-
 ## 🛡️ Security
 
-- ✅ Military-grade AES-256 encryption
+- ✅ AES-256 encryption
 - ✅ PBKDF2 key derivation
 - ✅ Full Unicode (UTF-8) support
 - ✅ No external dependencies
 - ✅ Modernized with Java 21
 
-## 📝 Recent Improvements (v2.0)
+## Recent Improvements (v2.0)
 
-- ✅ Migration to Java 21 LTS
-- ✅ Refactored `waitForEnter()` - menu works correctly
-- ✅ Code cleanup and warning reduction
-- ✅ StandardCharsets (UTF-8) support
-- ✅ Improved try-with-resources
-- ✅ Terminal with ANSI colors
+- Migration to Java 21 LTS
+- Refactored `waitForEnter()` - menu works correctly
+- Code cleanup and warning reduction
+- StandardCharsets (UTF-8) support
+- Improved try-with-resources
+- Terminal with ANSI colors
 
-## 👨‍💻 Technologies
+## Technologies
 
 [![Java](https://img.shields.io/badge/Language-Java%2021%20LTS-blue?style=flat-square&logo=java)](https://www.oracle.com/java/)
 [![Build](https://img.shields.io/badge/Build%20Tool-Maven%203.9-success?style=flat-square&logo=apache-maven)](https://maven.apache.org/)
@@ -187,5 +167,5 @@ MIT License - Free to use in your projects!
 ---
 
 **🔒 Keep your data secure!**  
-*Last updated: November 2025*
+
 
