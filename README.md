@@ -123,19 +123,19 @@ security-utils/
 
 ### Password Strength Verification
 Scoring based on:
-- ✅ Minimum length (8+ characters)
-- ✅ Lowercase inclusion
-- ✅ Uppercase inclusion
-- ✅ Number inclusion
-- ✅ Special character inclusion
+- Minimum length (8+ characters)
+- Lowercase inclusion
+- Uppercase inclusion
+- Number inclusion
+- Special character inclusion
 
-## 🛡️ Security
+## Security
 
-- ✅ AES-256 encryption
-- ✅ PBKDF2 key derivation
-- ✅ Full Unicode (UTF-8) support
-- ✅ No external dependencies
-- ✅ Modernized with Java 21
+- AES-256 encryption
+- PBKDF2 key derivation
+- Full Unicode (UTF-8) support
+- No external dependencies
+- Modernized with Java 21
 
 ## Recent Improvements (v2.0)
 
@@ -167,6 +167,7 @@ MIT License - Free to use in your projects!
 ---
 
 **🔒 Keep your data secure!**  
+
 
 
 
