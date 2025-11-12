@@ -1,7 +1,12 @@
 import java.util.Scanner;
 
+/**
+ * Main class for the Security Utils application.
+ * Updated for Java 21 with enhanced resource management.
+ * Fixed: Removed module-info requirements, corrected switch statements.
+ */
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     
     public static void main(String[] args) {
         TerminalUtils.printHeader();
@@ -45,7 +50,7 @@ switch (choice) {
                 TerminalUtils.printError("Please enter a valid number!");
             }
             
-            TerminalUtils.waitForEnter();
+            TerminalUtils.waitForEnter(scanner);
             TerminalUtils.printHeader();
         }
     }
@@ -58,18 +63,18 @@ switch (choice) {
         
         PasswordChecker.PasswordStrength result = PasswordChecker.analyzePassword(password);
         
-        System.out.println("\n" + TerminalUtils.CYAN + "📊 ANALYSIS RESULT:" + TerminalUtils.RESET);
+        System.out.println("\n" + TerminalUtils.CYAN + " ANALYSIS RESULT:" + TerminalUtils.RESET);
         System.out.println("Password: " + (password.length() > 20 ? password.substring(0, 20) + "..." : password));
         System.out.println("Length: " + password.length() + " characters");
         System.out.println("Score: " + result.score + "/5");
         System.out.println("Strength: " + result.strength);
         
         if (!result.suggestions.isEmpty()) {
-            System.out.println("\n💡 IMPROVEMENT SUGGESTIONS:");
+            System.out.println("\n IMPROVEMENT SUGGESTIONS:");
             System.out.println(result.suggestions);
         }
         
-        System.out.print("\n💾 Save this result? (y/N): ");
+        System.out.print("\n Save this result? (y/N): ");
         String save = scanner.nextLine().trim().toLowerCase();
         if (save.equals("y") || save.equals("yes")) {
             FileManager.savePasswordResult(password, result);
@@ -115,7 +120,7 @@ switch (choice) {
         
         String password = PasswordGenerator.generatePassword(length, true, true, true, true);
         
-        System.out.println("\n" + TerminalUtils.GREEN + "🔑 PASSWORD GENERATED SUCCESSFULLY!" + TerminalUtils.RESET);
+        System.out.println("\n" + TerminalUtils.GREEN + " PASSWORD GENERATED SUCCESSFULLY!" + TerminalUtils.RESET);
         System.out.println("Password: " + TerminalUtils.CYAN + password + TerminalUtils.RESET);
         System.out.println("Length: " + password.length() + " characters");
         System.out.println("Settings: Lowercase + Uppercase + Numbers + Special Characters");
@@ -123,7 +128,7 @@ switch (choice) {
         PasswordChecker.PasswordStrength analysis = PasswordChecker.analyzePassword(password);
         System.out.println("Strength: " + analysis.strength);
         
-        System.out.print("\n💾 Save this password? (y/N): ");
+        System.out.print("\n Save this password? (y/N): ");
         String save = scanner.nextLine().trim().toLowerCase();
         if (save.equals("y") || save.equals("yes")) {
             FileManager.saveGeneratedPassword(password, "Quick Secure Password");
@@ -151,7 +156,7 @@ switch (choice) {
         try {
             String password = PasswordGenerator.generatePassword(length, useLower, useUpper, useNumbers, useSpecial);
             
-            System.out.println("\n" + TerminalUtils.GREEN + "🔑 PASSWORD GENERATED SUCCESSFULLY!" + TerminalUtils.RESET);
+            System.out.println("\n" + TerminalUtils.GREEN + " PASSWORD GENERATED SUCCESSFULLY!" + TerminalUtils.RESET);
             System.out.println("Password: " + TerminalUtils.CYAN + password + TerminalUtils.RESET);
             System.out.println("Length: " + password.length() + " characters");
             
@@ -165,7 +170,7 @@ switch (choice) {
             PasswordChecker.PasswordStrength analysis = PasswordChecker.analyzePassword(password);
             System.out.println("Strength: " + analysis.strength);
             
-            System.out.print("\n💾 Save this password? (y/N): ");
+            System.out.print("\n Save this password? (y/N): ");
             String save = scanner.nextLine().trim().toLowerCase();
             if (save.equals("y") || save.equals("yes")) {
                 FileManager.saveGeneratedPassword(password, "Custom Secure Password");
@@ -185,12 +190,12 @@ switch (choice) {
         
         String password = PasswordGenerator.generateMemorablePassword(wordCount);
         
-        System.out.println("\n" + TerminalUtils.GREEN + "🧠 MEMORABLE PASSWORD GENERATED!" + TerminalUtils.RESET);
+        System.out.println("\n" + TerminalUtils.GREEN + " MEMORABLE PASSWORD GENERATED!" + TerminalUtils.RESET);
         System.out.println("Password: " + TerminalUtils.CYAN + password + TerminalUtils.RESET);
         System.out.println("Length: " + password.length() + " characters");
         System.out.println("Tip: Easy to remember, still secure!");
         
-        System.out.print("\n💾 Save this password? (y/N): ");
+        System.out.print("\n Save this password? (y/N): ");
         String save = scanner.nextLine().trim().toLowerCase();
         if (save.equals("y") || save.equals("yes")) {
             FileManager.saveGeneratedPassword(password, "Memorable Password");
@@ -212,32 +217,43 @@ switch (choice) {
         System.out.print("Option (1-3): ");
         
         int algo = Integer.parseInt(scanner.nextLine());
-        String hash = "";
-        String algoName = "";
+        
+        String hash;
+        String algoName;
         
         switch (algo) {
             case 1:
                 hash = HashGenerator.generateMD5(text);
                 algoName = "MD5";
+                System.out.println("\n" + TerminalUtils.GREEN + " HASH GENERATED:" + TerminalUtils.RESET);
+                System.out.println("Algorithm: " + algoName);
+                System.out.println("Text: " + text);
+                System.out.println("Hash: " + TerminalUtils.CYAN + hash + TerminalUtils.RESET);
+                System.out.println("Hash length: " + hash.length() + " characters");
                 break;
             case 2:
                 hash = HashGenerator.generateSHA256(text);
                 algoName = "SHA-256";
+                System.out.println("\n" + TerminalUtils.GREEN + " HASH GENERATED:" + TerminalUtils.RESET);
+                System.out.println("Algorithm: " + algoName);
+                System.out.println("Text: " + text);
+                System.out.println("Hash: " + TerminalUtils.CYAN + hash + TerminalUtils.RESET);
+                System.out.println("Hash length: " + hash.length() + " characters");
                 break;
             case 3:
                 hash = HashGenerator.generateSHA512(text);
                 algoName = "SHA-512";
+                System.out.println("\n" + TerminalUtils.GREEN + " HASH GENERATED:" + TerminalUtils.RESET);
+                System.out.println("Algorithm: " + algoName);
+                System.out.println("Text: " + text);
+                System.out.println("Hash: " + TerminalUtils.CYAN + hash + TerminalUtils.RESET);
+                System.out.println("Hash length: " + hash.length() + " characters");
                 break;
             default:
                 TerminalUtils.printError("Invalid algorithm!");
+                TerminalUtils.endSection();
                 return;
         }
-        
-        System.out.println("\n" + TerminalUtils.GREEN + "🔐 HASH GENERATED:" + TerminalUtils.RESET);
-        System.out.println("Algorithm: " + algoName);
-        System.out.println("Text: " + text);
-        System.out.println("Hash: " + TerminalUtils.CYAN + hash + TerminalUtils.RESET);
-        System.out.println("Hash length: " + hash.length() + " characters");
         
         TerminalUtils.endSection();
     }
@@ -254,17 +270,17 @@ switch (choice) {
         try {
             String encrypted = Encryptor.encrypt(text, password);
             
-            System.out.println("\n" + TerminalUtils.GREEN + "🔒 ENCRYPTION SUCCESSFUL!" + TerminalUtils.RESET);
+            System.out.println("\n" + TerminalUtils.GREEN + " ENCRYPTION SUCCESSFUL!" + TerminalUtils.RESET);
             System.out.println("Original text: " + text);
             System.out.println("Encrypted text: " + TerminalUtils.CYAN + encrypted + TerminalUtils.RESET);
             System.out.println("Password used: " + password);
             
-            // Teste de verificação automática
+                // Auto-verification test
             String decrypted = Encryptor.decrypt(encrypted, password);
-            System.out.println("Auto-verification: " + (text.equals(decrypted) ? "✅ SUCCESS" : "❌ FAILED"));
+            System.out.println("Auto-verification: " + (text.equals(decrypted) ? " SUCCESS" : " FAILED"));
             
-            // Oferece para salvar
-            System.out.print("\n💾 Save encrypted text to file? (y/N): ");
+                // Offer to save
+            System.out.print("\n Save encrypted text to file? (y/N): ");
             String save = scanner.nextLine().trim().toLowerCase();
             if (save.equals("y") || save.equals("yes")) {
                 try {
@@ -274,8 +290,8 @@ switch (choice) {
                                    "Timestamp: " + java.time.LocalDateTime.now();
                     FileManager.saveToFile("encrypted_data.txt", content);
                     TerminalUtils.printSuccess("Encrypted data saved to encrypted_data.txt");
-                    TerminalUtils.printWarning("⚠️  Keep the password safe to decrypt later!");
-                } catch (Exception e) {
+                    TerminalUtils.printWarning("  Keep the password safe to decrypt later!");
+                } catch (java.io.IOException | RuntimeException e) {
                     TerminalUtils.printError("Error saving file: " + e.getMessage());
                 }
             }
@@ -299,12 +315,12 @@ switch (choice) {
         try {
             String decrypted = Encryptor.decrypt(encryptedText, password);
             
-            System.out.println("\n" + TerminalUtils.GREEN + "🔓 DECRYPTION SUCCESSFUL!" + TerminalUtils.RESET);
+            System.out.println("\n" + TerminalUtils.GREEN + "  DECRYPTION SUCCESSFUL!" + TerminalUtils.RESET);
             System.out.println("Encrypted text: " + encryptedText);
             System.out.println("Decrypted text: " + TerminalUtils.CYAN + decrypted + TerminalUtils.RESET);
             System.out.println("Password used: " + password);
             
-            System.out.print("\n💾 Save decryption result to file? (y/N): ");
+            System.out.print("\n Save decryption result to file? (y/N): ");
             String save = scanner.nextLine().trim().toLowerCase();
             if (save.equals("y") || save.equals("yes")) {
                 try {
@@ -314,7 +330,7 @@ switch (choice) {
                                    "Timestamp: " + java.time.LocalDateTime.now();
                     FileManager.saveToFile("decrypted_data.txt", content);
                     TerminalUtils.printSuccess("Decryption result saved to decrypted_data.txt");
-                } catch (Exception e) {
+                } catch (java.io.IOException | RuntimeException e) {
                     TerminalUtils.printError("Error saving file: " + e.getMessage());
                 }
             }
@@ -342,7 +358,8 @@ switch (choice) {
         System.out.print("Option (1-2): ");
         
         int algo = Integer.parseInt(scanner.nextLine());
-        String newHash = "";
+        
+        String newHash;
         
         switch (algo) {
             case 1:
@@ -353,17 +370,18 @@ switch (choice) {
                 break;
             default:
                 TerminalUtils.printError("Invalid algorithm!");
+                TerminalUtils.endSection();
                 return;
         }
         
-        System.out.println("\n" + TerminalUtils.CYAN + "🔍 HASH COMPARISON:" + TerminalUtils.RESET);
+        System.out.println("\n" + TerminalUtils.CYAN + " HASH COMPARISON:" + TerminalUtils.RESET);
         System.out.println("Provided hash: " + hashToCompare);
         System.out.println("Calculated hash: " + newHash);
         
         if (newHash.equalsIgnoreCase(hashToCompare)) {
-            TerminalUtils.printSuccess("✅ HASHES MATCH! Authentication valid.");
+            TerminalUtils.printSuccess(" HASHES MATCH! Authentication valid.");
         } else {
-            TerminalUtils.printError("🚨 HASHES DON'T MATCH! Possible tampering.");
+            TerminalUtils.printError("  HASHES DON'T MATCH! Possible tampering.");
         }
         
         TerminalUtils.endSection();
