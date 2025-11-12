@@ -1,3 +1,7 @@
+/**
+ * TerminalUtils class for terminal output formatting and styling.
+ * Updated for Java 21 with ANSI color codes and improved formatting.
+ */
 public class TerminalUtils {
     
     public static final String RESET = "\u001B[0m";
@@ -27,7 +31,7 @@ public class TerminalUtils {
     public static void printHeader() {
         clearScreen();
         System.out.println(CYAN + "╔══════════════════════════════════════════════════════════════╗" + RESET);
-        System.out.println(CYAN + "║" + PURPLE + "                  🔒 SECURITY UTILS v2.0                  " + CYAN + "     ║" + RESET);
+        System.out.println(CYAN + "║" + PURPLE + "                    SECURITY UTILS v2.0                  " + CYAN + "     ║" + RESET);
         System.out.println(CYAN + "║" + YELLOW + "           Java Security Toolkit - Premium Edition        " + CYAN + "    ║" + RESET);
         System.out.println(CYAN + "╚══════════════════════════════════════════════════════════════╝" + RESET);
         System.out.println();
@@ -44,32 +48,33 @@ public class TerminalUtils {
         System.out.println(BLUE + "│" + RESET + "  " + GREEN + "7" + RESET + " │ Compare hashes                                  " + BLUE + "        │" + RESET);
         System.out.println(BLUE + "│" + RESET + "  " + RED + "0" + RESET + " │ Exit                                            " + BLUE + "        │" + RESET);
         System.out.println(BLUE + "└──────────────────────────────────────────────────────────────┘" + RESET);
-        System.out.print(YELLOW + "👉 Choose an option: " + RESET);
+        System.out.print(YELLOW + "  Choose an option: " + RESET);
     }
     
     public static void printSuccess(String message) {
-        System.out.println(GREEN + "✅ " + message + RESET);
+        System.out.println(GREEN + "  " + message + RESET);
     }
     
     public static void printError(String message) {
-        System.out.println(RED + "❌ " + message + RESET);
+        System.out.println(RED + "  " + message + RESET);
     }
     
     public static void printWarning(String message) {
-        System.out.println(YELLOW + "⚠️  " + message + RESET);
+        System.out.println(YELLOW + "   " + message + RESET);
     }
     
     public static void printInfo(String message) {
-        System.out.println(CYAN + "ℹ️  " + message + RESET);
+        System.out.println(CYAN + "    " + message + RESET);
     }
-    
-public static void waitForEnter() {
-    System.out.println(YELLOW + "\n📥 Press Enter to continue..." + RESET);
-    try {
-        new java.util.Scanner(System.in).nextLine();
-    } catch (Exception e) {
+
+    public static void waitForEnter(java.util.Scanner scanner) {
+        System.out.println(YELLOW + "\n  Press Enter to continue..." + RESET);
+        try {
+            scanner.nextLine();
+        } catch (Exception e) {
+            // Ignored
+        }
     }
-}
     
     public static void printSection(String title) {
         System.out.println();
