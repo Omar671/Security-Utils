@@ -1,0 +1,47 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+.flattened-pom.xml
+.m2/
+
+# Compiled Java
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# IDE
+.idea/
+.eclipse/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.log
+*.txt
+!README*.md
+!UPGRADE*.md
+
+# Build
+build/
+dist/
+.gradle/
+out/
+
+# Module
+module-info.class
+
+# OS
+.DS_Store
+desktop.ini
