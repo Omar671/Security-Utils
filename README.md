@@ -7,6 +7,8 @@
 [![Encryption](https://img.shields.io/badge/Encryption-AES--256-red?style=flat-square&logo=security)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 [![Security](https://img.shields.io/badge/Security-SHA--256%2FSHA--512-orange?style=flat-square)](https://en.wikipedia.org/wiki/SHA-2)
 
+<img width="456" height="295" alt="image" src="https://github.com/user-attachments/assets/c20f3654-3ca7-42de-8f7e-48eed5f49755" />
+
 A comprehensive security toolkit in Java 21, featuring password generator, password strength checker, AES-256 encryption, hash generator, and much more!
 
 ## ✨ Main Features
@@ -186,3 +188,4 @@ MIT License - Free to use in your projects!
 
 **🔒 Keep your data secure!**  
 *Last updated: November 2025*
+
