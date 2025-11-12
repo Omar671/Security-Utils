@@ -1,6 +1,10 @@
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * HashGenerator class for generating various hash types.
+ * Updated for Java 21 with improved code structure.
+ */
 public class HashGenerator {
     
     private static String bytesToHex(byte[] bytes) {
