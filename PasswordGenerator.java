@@ -3,6 +3,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * PasswordGenerator class for generating secure and memorable passwords.
+ * Updated for Java 21 with improved code structure and documentation.
+ */
 public class PasswordGenerator {
     private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
     private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -13,8 +17,8 @@ public class PasswordGenerator {
     
     public static String generatePassword(int length, boolean useLower, boolean useUpper, 
                                          boolean useNumbers, boolean useSpecial) {
-        if (length < 4) {
-            throw new IllegalArgumentException("Password must have at least 4 characters");
+        if (length < 12) {
+            throw new IllegalArgumentException("Password must have at least 12 characters");
         }
         
         StringBuilder allChars = new StringBuilder();
