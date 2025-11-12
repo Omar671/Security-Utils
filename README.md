@@ -10,7 +10,7 @@
 <img width="456" height="295" alt="image" src="https://github.com/user-attachments/assets/c20f3654-3ca7-42de-8f7e-48eed5f49755" />
 
 java Security Toolkit
-
+You can use Ccrypt in the files that contain the passwords
 A handy Java 21 toolkit for everyday security tasks. It lets you generate strong passwords, check how secure they are, encrypt and decrypt text with AES-256, generate file hashes, and manage your results.
 
 What's Inside
@@ -167,6 +167,7 @@ MIT License - Free to use in your projects!
 ---
 
 **🔒 Keep your data secure!**  
+
 
 
 
