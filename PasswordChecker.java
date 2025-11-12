@@ -1,5 +1,9 @@
 import java.util.regex.Pattern;
 
+/**
+ * PasswordChecker class for analyzing password strength.
+ * Updated for Java 21 with improved code structure and documentation.
+ */
 public class PasswordChecker {
     
     public static class PasswordStrength {
@@ -24,48 +28,48 @@ public class PasswordChecker {
             score += 2;
         } else if (password.length() >= 8) {
             score += 1;
-            suggestions.append("• Use at least 12 characters\n");
+            suggestions.append(" Use at least 12 characters\n");
         } else {
-            suggestions.append("• Password too short (minimum 8 characters)\n");
+            suggestions.append(" Password too short (minimum 8 characters)\n");
         }
         
         if (Pattern.compile("[A-Z]").matcher(password).find()) {
             score++;
         } else {
-            suggestions.append("• Add UPPERCASE letters\n");
+            suggestions.append(" Add UPPERCASE letters\n");
         }
         
         if (Pattern.compile("[a-z]").matcher(password).find()) {
             score++;
         } else {
-            suggestions.append("• Add lowercase letters\n");
+            suggestions.append(" Add lowercase letters\n");
         }
         
         if (Pattern.compile("[0-9]").matcher(password).find()) {
             score++;
         } else {
-            suggestions.append("• Add NUMBERS\n");
+            suggestions.append(" Add NUMBERS\n");
         }
         
         if (Pattern.compile("[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]").matcher(password).find()) {
             score++;
         } else {
-            suggestions.append("• Add SPECIAL CHARACTERS (!@#$...)\n");
+            suggestions.append(" Add SPECIAL CHARACTERS (!@#$...)\n");
         }
         
         if (Pattern.compile("(123|abc|qwert|asdf)").matcher(password.toLowerCase()).find()) {
             score--;
-            suggestions.append("• Avoid common sequences\n");
+            suggestions.append(" Avoid common sequences\n");
         }
         
         if (score >= 5) {
-            result.strength = "🔒 VERY STRONG";
+            result.strength = "  VERY STRONG";
         } else if (score >= 4) {
-            result.strength = "✅ STRONG";
+            result.strength = "  STRONG";
         } else if (score >= 3) {
-            result.strength = "⚠️  MEDIUM";
+            result.strength = "   MEDIUM";
         } else {
-            result.strength = "🚨 WEAK";
+            result.strength = "  WEAK";
         }
         
         result.score = score;
