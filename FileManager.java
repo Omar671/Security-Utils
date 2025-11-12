@@ -1,12 +1,22 @@
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.nio.charset.StandardCharsets;
 
+/**
+ * FileManager class for handling file operations.
+ * Updated for Java 21 with improved resource handling and modern API usage.
+ */
 public class FileManager {
     
     public static void saveToFile(String filename, String content) throws IOException {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-            writer.println("=== " + java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + " ===");
+        try (PrintWriter writer = new PrintWriter(
+                new OutputStreamWriter(
+                        new FileOutputStream(filename, true),
+                        StandardCharsets.UTF_8
+                ))) {
+            writer.println("=== " + LocalDateTime.now().format(
+                    DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + " ===");
             writer.println(content);
             writer.println("=".repeat(50));
             writer.println();
